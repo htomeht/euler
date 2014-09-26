@@ -14,6 +14,6 @@ def maxsum(l):
   return mx
 
 sections = [x for x in number.split("0") if len(x) >= 13]
-mx = max([maxsum(x) for x in l])
+mx = max([maxsum(x) for x in sections])
 
 print(mx)
