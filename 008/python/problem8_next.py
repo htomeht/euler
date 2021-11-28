@@ -13,7 +13,7 @@ def maxsum(l):
     mx = max(mx, reduce(mul, [int(x) for x in l[i:i+13]]))
   return mx
 
-sections = iter([x for x in number.split("0") if len(x) >= 13])
+sections = [x for x in number.split("0") if len(x) >= 13]
 mx = max([maxsum(x) for x in sections])
 
 print(mx)

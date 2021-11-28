@@ -1,0 +1,53 @@
+#! /bin/env python
+
+import math
+import primes
+from collections import Counter
+
+class Factorize:
+
+  def __init__(self, compound):
+    self.number = compound
+    self.compound = compound
+    self.factors = Counter([1])
+    self.divisors_base = [] 
+
+  def getFactors(self):
+    return self.factors
+    
+  def getSize(self):
+    return len(self.factors)
+
+  def factorize(self):
+    p = primes.Primes(self.compound)
+    self.divisors_base = [] 
+
+    for prime in p.genPrimes():
+      div = 1
+      while int(self.compound % prime) == 0:
+        self.factors[prime] += 1
+        div *= prime
+        if self.number != div:
+          self.divisors_base.append(div)
+
+        self.compound = int(self.compound/prime)
+    print(self.number, ":", self.divisors_base)
+    return self
+
+  def divisors(self):
+    divisors = self.divisors_base[::]
+    
+    for d1 in self.divisors_base:
+      for d2 in self.divisors_base:
+        divisor = d1*d2
+        if divisor < self.number and divisor not in divisors:
+          divisors.append(divisor)
+    divisors.append(1)
+    return divisors
+
+  def simple(self):
+    i = 2
+    while i < self.compound:
+      if self.compound % i == 0:
+        self.factors.append(i)
+      i += 1

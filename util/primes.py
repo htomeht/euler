@@ -48,6 +48,7 @@ class Primes:
     for a in range(7, self.limit):
       if (self.sieve.isPrime(a)):
         self.primes.append(a)
+    return self.primes
     
   def getPrimes(self):
     return self.primes
